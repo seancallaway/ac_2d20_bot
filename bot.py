@@ -50,7 +50,7 @@ async def test(ctx, pool: int, target: int):
             successes += 1
         elif result == 20:
             complications += 1
-        results.append(result)
+        results.append(str(result))
 
     await ctx.send(f'{successes} successes. {complications} complications. [{", ".join(results)}]')
 
