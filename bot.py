@@ -74,4 +74,17 @@ async def challenge(ctx, count: int = 1):
 
     await ctx.send(f'{total} with {effects} effects [{", ".join(results)}]')
 
+
+@bot.command()
+async def roll(ctx, dice: str):
+    """Roll die in NdN format."""
+    try:
+        rolls, limit = map(int, dice.split('d'))
+    except Exception:
+        await ctx.send('Format has to be in NdN!')
+        return
+
+    result = ', '.join(str(randint(1, limit)) for _ in range(rolls))
+    await ctx.send(result)
+
 bot.run(bot_token)
