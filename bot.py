@@ -55,4 +55,23 @@ async def test(ctx, pool: int, target: int):
     await ctx.send(f'{successes} successes. {complications} complications. [{", ".join(results)}]')
 
 
+@bot.command()
+async def challenge(ctx, count: int = 1):
+    total = 0
+    effects = 0
+    results = []
+    for _ in range(count):
+        roll = randint(1, 6)
+        if roll > 4:
+            total += 1
+            effects += 1
+            results.append('1 + effect')
+        elif roll in (3, 4):
+            results.append('0')
+        else:
+            total += roll
+            results.append(str(roll))
+
+    await ctx.send(f'{total} with {effects} effects [{", ".join(results)}]')
+
 bot.run(bot_token)
