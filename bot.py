@@ -85,6 +85,6 @@ async def roll(ctx, dice: str):
         return
 
     result = ', '.join(str(randint(1, limit)) for _ in range(rolls))
-    await ctx.send(result)
+    await ctx.send(f'[{result}]')
 
 bot.run(bot_token)
