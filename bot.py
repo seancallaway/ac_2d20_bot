@@ -104,4 +104,6 @@ async def roll(ctx, dice: str):
     result = ', '.join(str(randint(1, limit)) for _ in range(rolls))
     await ctx.send(f'[{result}]')
 
-bot.run(bot_token)
+
+if __name__ == '__main__':
+    bot.run(bot_token)
