@@ -76,6 +76,23 @@ async def challenge(ctx, count: int = 1):
 
 
 @bot.command()
+async def assist(ctx, target: int):
+    if target < 1 or target > 20:
+        await ctx.send('[ERROR] Target must be between 1 and 20.')
+        return
+
+    successes = 0
+
+    result = randint(1, 20)
+    if result == 1:
+        successes += 2
+    elif result <= target:
+        successes += 1
+
+    await ctx.send(f'{successes} successes. [{result}]')
+
+
+@bot.command()
 async def roll(ctx, dice: str):
     """Roll die in NdN format."""
     try:
